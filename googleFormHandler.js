@@ -16,26 +16,26 @@ async function handleFormSubmission() {
   const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, jwt);
 
   await doc.loadInfo();
-  console.log(`Loaded doc: ${doc.title}`);
+  // console.log(`Loaded doc: ${doc.title}`);
   const sheet = doc.sheetsByIndex[0];
-  console.log(`Accessed sheet: ${sheet.title}`);
+  // console.log(`Accessed sheet: ${sheet.title}`);
 
   // Load the header row
   await sheet.loadHeaderRow();
   const headers = sheet.headerValues;
-  console.log('Sheet headers:', headers);
+  // console.log('Sheet headers:', headers);
 
   // Load all rows
   const rows = await sheet.getRows();
-  console.log(`Number of rows: ${rows.length}`);
+  // console.log(`Number of rows: ${rows.length}`);
 
   if (rows.length === 0) {
     throw new Error('The sheet is empty');
   }
 
   const latestSubmission = rows[rows.length - 1];
-  console.log('Latest submission raw data:', latestSubmission._rawData);
-  console.log('Latest submission properties:', Object.keys(latestSubmission));
+  // console.log('Latest submission raw data:', latestSubmission._rawData);
+  // console.log('Latest submission properties:', Object.keys(latestSubmission));
 
   // Create an object mapping header names to values
   const submissionData = {};
@@ -43,7 +43,7 @@ async function handleFormSubmission() {
     submissionData[header] = latestSubmission._rawData[index];
   });
 
-  console.log('Mapped submission data:', submissionData);
+  // console.log('Mapped submission data:', submissionData);
 
   if (!submissionData['Meal Preference']) {
     throw new Error("'Meal Preference' column not found or empty in the latest submission");
