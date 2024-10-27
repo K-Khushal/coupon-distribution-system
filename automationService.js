@@ -18,7 +18,7 @@ async function checkForNewResponses() {
     }
   } catch (error) {
     console.error('Error in automation:', error.message);
-    console.error('Stack trace:', error.stack);
+    // console.error('Stack trace:', error.stack);
   }
 }
 

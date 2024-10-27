@@ -51,7 +51,7 @@ Saptrang Shorfest
     `,
     html: `
    <h1>Thank you for registering for Saptrang Shorfest!</h1>
-   <p style="font-size: 18px;">You have selected the following food coupons: <strong>${preferences}</strong></p>
+   <p style="font-size: 18px;">You have selected the following food coupons:<strong>${preferences}</strong></p>
    <p style="font-size: 18px;">If you have any questions or need to make any changes, please feel free to contact us.</p>
    <p style="font-size: 18px;">Your food coupons are attached for your reference.</p>
    <p style="font-size: 18px;">Best regards,<br><strong>Saptrang Shorfest</strong></p>
@@ -68,7 +68,7 @@ Saptrang Shorfest
     }
 }
 
-function logEmail(email, preferences) {
+function logEmail(email) {
   const logEntry = `Email sent to: ${email}, Timestamp: ${new Date().toISOString()}\n`;
   fs.appendFile('email_log.txt', logEntry, (err) => {
     if (err) {
